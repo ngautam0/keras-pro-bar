@@ -102,7 +102,7 @@ class TQDMCallback(Callback):
         self.sample_count = self.sample_count + self.batch_size
 
     def on_batch_end(self, batch, logs={}):
-        if self.sample_count < self.params['num_samples'] - 1:
+        if self.sample_count < self.params['samples'] - 1:
             self.append_logs(logs)
             metrics = self.format_metrics(self.running_logs)
             desc = self.inner_description_update.format(epoch=self.epoch, metrics=metrics)
