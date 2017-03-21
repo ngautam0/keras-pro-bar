@@ -81,7 +81,7 @@ class TQDMCallback(Callback):
         desc = self.inner_description_initial.format(epoch=self.epoch)
         self.sample_count = 0
         if self.show_inner:
-            self.tqdm_inner = self.build_tqdm_inner(desc=desc, total=self.params['nb_sample'])
+            self.tqdm_inner = self.build_tqdm_inner(desc=desc, total=self.params['num_samples'])
         self.running_logs = {}
 
     def on_epoch_end(self, epoch, logs={}):
@@ -102,7 +102,7 @@ class TQDMCallback(Callback):
         self.sample_count = self.sample_count + self.batch_size
 
     def on_batch_end(self, batch, logs={}):
-        if self.sample_count < self.params['nb_sample'] - 1:
+        if self.sample_count < self.params['num_samples'] - 1:
             self.append_logs(logs)
             metrics = self.format_metrics(self.running_logs)
             desc = self.inner_description_update.format(epoch=self.epoch, metrics=metrics)
