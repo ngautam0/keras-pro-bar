@@ -112,7 +112,7 @@ class TQDMCallback(Callback):
 
     def on_train_begin(self, logs={}):
         if self.show_outer:
-            self.tqdm_outer = self.build_tqdm_outer(desc=self.outer_description, total=self.params["epoch"])
+            self.tqdm_outer = self.build_tqdm_outer(desc=self.outer_description, total=self.params["epochs"])
 
     def on_train_end(self, logs={}):
         if self.show_outer:
